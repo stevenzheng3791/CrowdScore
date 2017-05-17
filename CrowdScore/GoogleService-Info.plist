@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>185484417329-b3kgepsph8kkgkm8nv49g9cos9viq7s4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.185484417329-b3kgepsph8kkgkm8nv49g9cos9viq7s4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAVFampyPnJZh916BKzsdIBuqg17cB1n8Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>185484417329</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.szzheng.DoubleBagel</string>
+	<key>PROJECT_ID</key>
+	<string>double-bagel</string>
+	<key>STORAGE_BUCKET</key>
+	<string>double-bagel.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:185484417329:ios:fe3a9faf69b0e9be</string>
+	<key>DATABASE_URL</key>
+	<string>https://double-bagel.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,26 +1,82 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CrowdScore" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="BaseView" customModule="CrowdScore" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-dV-kP2" customClass="RoundedButton" customModule="CrowdScore" customModuleProvider="target">
+                                <rect key="frame" x="164.5" y="378" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="HQ6-se-DOb"/>
+                                    <constraint firstAttribute="height" constant="30" id="Nax-5N-HfK"/>
+                                </constraints>
+                                <state key="normal" title="Create New Team"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBs-Nt-4rz" customClass="RoundedButton" customModule="CrowdScore" customModuleProvider="target">
+                                <rect key="frame" x="164.5" y="438" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="G4G-W7-pRN"/>
+                                    <constraint firstAttribute="height" constant="30" id="aiv-rL-rA7"/>
+                                </constraints>
+                                <state key="normal" title="Find a Team"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SV-ul-g28">
+                                <rect key="frame" x="142" y="476" width="91" height="30"/>
+                                <state key="normal" title="How It Works"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_8x.png" translatesAutoresizingMaskIntoConstraints="NO" id="n6o-yQ-wP6">
+                                <rect key="frame" x="68" y="120" width="238" height="146"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="HNR-Jo-axH"/>
+                                    <constraint firstAttribute="height" constant="146" id="uw9-uM-bSt"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10856886121955249" green="0.090516334246337857" blue="0.23278870558375631" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aBs-Nt-4rz" firstAttribute="top" secondItem="X5r-dV-kP2" secondAttribute="bottom" constant="30" id="2Kc-ZV-CxD"/>
+                            <constraint firstItem="aBs-Nt-4rz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5ft-CQ-am7"/>
+                            <constraint firstItem="n6o-yQ-wP6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OGl-PK-RtB"/>
+                            <constraint firstItem="7SV-ul-g28" firstAttribute="top" secondItem="aBs-Nt-4rz" secondAttribute="bottom" constant="8" id="XdC-OG-nH4"/>
+                            <constraint firstItem="X5r-dV-kP2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="358" id="fBr-KX-AsO"/>
+                            <constraint firstItem="X5r-dV-kP2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gKw-Np-lT1"/>
+                            <constraint firstItem="7SV-ul-g28" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="txC-DX-7Xd"/>
+                            <constraint firstItem="n6o-yQ-wP6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="txi-ss-wM4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createTeamButton" destination="X5r-dV-kP2" id="qxI-to-sd0"/>
+                        <outlet property="createTeamButtonHeight" destination="Nax-5N-HfK" id="cM7-BL-HTu"/>
+                        <outlet property="createTeamButtonWidth" destination="HQ6-se-DOb" id="k6y-jo-SSi"/>
+                        <outlet property="findTeamButton" destination="aBs-Nt-4rz" id="UCl-OR-wax"/>
+                        <outlet property="findTeamButtonHeight" destination="aiv-rL-rA7" id="aDg-vc-2sm"/>
+                        <outlet property="findTeamButtonWidth" destination="G4G-W7-pRN" id="lJz-8H-dGk"/>
+                        <outlet property="tutorialButton" destination="7SV-ul-g28" id="gLu-16-v8p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo_8x.png" width="952" height="584"/>
+    </resources>
 </document>
