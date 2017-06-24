@@ -1,5 +1,5 @@
 //
-//  ButtonExtension.swift
+//  UIButtonExtension.swift
 //  CrowdScore
 //
 //  Created by Steven Zheng on 5/13/17.
@@ -19,5 +19,9 @@ extension UIButton {
     func enable() {
         self.isEnabled = true
         self.alpha = 1.0
+    }
+    
+    func setTitle(title: String) {
+        self.setTitle(title, for: .normal)
     }
 }

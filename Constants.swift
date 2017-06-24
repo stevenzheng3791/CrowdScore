@@ -20,7 +20,10 @@ let mediumButtonSize = CGSize(width: 140, height: 40)
 let largeButtonSize = CGSize(width: 240, height: 60)
 let largeButtonFont = UIFont(name: "Helvetica", size: 20)
 
-let directionFont = UIFont(name: "Helvetica", size:20)
+let standardLabelFont = UIFont(name: "Helvetica", size:20)
 
 
+let cellHeight = 70 as CGFloat
 
+
+let scoreCardWidth = 30 as CGFloat

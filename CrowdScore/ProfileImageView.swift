@@ -18,17 +18,21 @@ class ProfileImageView: UIImageView {
     }
     */
     
-    override func layoutSubviews() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         let length = min(self.frame.size.width,self.frame.size.height)
         
-        let origin = CGPoint(x: self.frame.origin.x + self.frame.size.width/2 - length/2, y: self.frame.origin.y + self.frame.size.height/2 - length/2)
         let size = CGSize(width: length, height: length)
         
-        self.frame = CGRect(origin: origin, size: size)
+        self.frame = CGRect(x: self.center.x - size.width/2, y: self.center.y - size.height/2, width: size.width, height: size.height)
         self.layer.cornerRadius = length/2
         self.clipsToBounds = true
         self.layer.borderColor = whiteColor.cgColor
         self.layer.borderWidth = 2.0
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 
 }

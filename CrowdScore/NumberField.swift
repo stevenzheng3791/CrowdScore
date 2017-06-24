@@ -21,16 +21,17 @@ class NumberField: UIView {
     var number : UITextField!
     var caption : UILabel!
     var preCaption: UILabel!
+
     
-    func setup() {
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         preCaption = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 20))
         preCaption.textColor = whiteColor
         preCaption.textAlignment = NSTextAlignment.center
         preCaption.font = UIFont(name: "Helvetica", size: 20)
         preCaption.text = "Pre-caption"
         self.addSubview(preCaption)
-            
+        
         number = UITextField(frame: CGRect(x: 0, y: 20, width: self.frame.width, height: self.frame.height - 40))
         number.textColor = whiteColor
         number.backgroundColor = UIColor.clear
@@ -45,11 +46,6 @@ class NumberField: UIView {
         caption.font = UIFont(name: "Helvetica", size: 20)
         caption.text = "Caption"
         self.addSubview(caption)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {

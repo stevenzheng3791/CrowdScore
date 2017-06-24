@@ -1,14 +1,14 @@
 //
-//  TextField.swift
+//  StandardLabel.swift
 //  CrowdScore
 //
-//  Created by Steven Zheng on 5/16/17.
+//  Created by Steven Zheng on 5/14/17.
 //  Copyright © 2017 szzheng. All rights reserved.
 //
 
 import UIKit
 
-class TextField: UITextField {
+class StandardLabel: UILabel {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,12 +18,15 @@ class TextField: UITextField {
     }
     */
     
+    func setup() {
+        self.textColor = whiteColor
+        self.font = standardLabelFont
+        self.textAlignment = NSTextAlignment.center
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = whiteColor
-        self.textAlignment = NSTextAlignment.center
-        self.tintColor = UIColor.clear
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {

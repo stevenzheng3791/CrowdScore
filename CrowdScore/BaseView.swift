@@ -18,24 +18,16 @@ class BaseView: UIView {
     }
     */
     
-    var backButton : UIButton!
-    var editButton : UIButton!
-    
-    func setup() {
-        self.backgroundColor = darkGrayColor
-        backButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 80))
-        self.addSubview(backButton)
-        backButton.setTitleColor(whiteColor, for: .normal)
-        backButton.setTitle("Back", for: .normal)
-        backButton.contentHorizontalAlignment = .left
-    }
-    override func awakeFromNib() {
-        setup()
-    }
+    var backgroundView : BackgroundView!
+    var navBar : NavigationBar!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        backgroundView = BackgroundView(frame: self.frame)
+        self.addSubview(backgroundView)
+        
+        navBar = NavigationBar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 80))
+        self.addSubview(navBar)
     }
     
     required init?(coder aDecoder: NSCoder) {

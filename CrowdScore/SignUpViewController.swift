@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
+    var ref: DatabaseReference!
     
     var baseView : BaseView!
     
-    var directionsLabel : DirectionLabel!
-    var backButton : UIButton!
-    var nextButton : RoundedButton!
+    var directionsLabel : StandardLabel!
+    var nextButton : StandardButton!
     
     var textField : TextField!
     var numberField : NumberField!
@@ -30,25 +32,26 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        ref = Database.database().reference()
+        self.title = "Sign Up"
+        
         /* load base view */
         baseView = BaseView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         self.view = baseView
         
         
         /* load navigation buttons */
-        backButton = baseView.backButton
-        nextButton = RoundedButton(frame: CGRect(x: 0, y: 0, width: largeButtonSize.width, height: largeButtonSize.height))
-        nextButton.backgroundColor = blueButtonColor
-        nextButton.setTitle("Continue", for: .normal)
+        nextButton = StandardButton(frame: CGRect(x: 0, y: 0, width: largeButtonSize.width, height: largeButtonSize.height))
+        nextButton.setTitle(title: "Continue")
         nextButton.center = baseView.center
         baseView.addSubview(nextButton)
         
         
         /* load directions text */
-        directionsLabel = DirectionLabel(frame: CGRect(x: 0, y: 0, width: baseView.frame.size.width * 3/4, height: 0))
+        directionsLabel = StandardLabel(frame: CGRect(x: 0, y: 0, width: baseView.frame.size.width * 3/4, height: 0))
         directionsLabel.numberOfLines = 0
         directionsLabel.center = baseView.center
-        positionViewBelow(bottomView: directionsLabel, topView: backButton, distance: 20)
+        positionViewBelow(bottomView: directionsLabel, topView: baseView.navBar, distance: 20)
         baseView.addSubview(directionsLabel)
         
         /* load input fields */
@@ -71,7 +74,7 @@ class SignUpViewController: UIViewController {
         
         /* actions */
         nextButton.addTarget(self, action: #selector(nextStep), for: .touchUpInside)
-        backButton.addTarget(self, action: #selector(prevStep), for: .touchUpInside)
+        baseView.navBar.topItem?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(prevStep))
         textField.addTarget(self, action: #selector(inputFieldDidChange(_:)), for: .editingChanged)
         numberField.number.addTarget(self, action: #selector(inputFieldDidChange(_:)), for: .editingChanged)
         
@@ -81,7 +84,7 @@ class SignUpViewController: UIViewController {
                  2: (direction: "Next we will ask you a few questions to set up your team.\n\nFor the following questions, answer the best you can.\n\n(Advanced settings will be availble later)\n\n\n", btnDirection: "Next", setting: "", inputForm: nil, misc:[:]),
                  3: (direction: "How many singles matches are played per session?", btnDirection: "Next", setting: "4", inputForm: numberField, misc: ["preText": "", "postText": "Matches"]),
                  4: (direction: "How many doubles matches are played per session?", btnDirection: "Next", setting: "3", inputForm: numberField, misc: ["preText": "", "postText": "Matches"]),
-                 5: (direction: "How many sets are there in a match?", btnDirection: "Next", setting: "3", inputForm: numberField, misc: ["preText": "Best of", "postText": "Sets"]),
+                 5: (direction: "How many sets are there in a match?", btnDirection: "Next", setting: "2", inputForm: numberField, misc: ["preText": "Best of", "postText": "Sets"]),
                  6: (direction: "How many games to win a set (Win by 2)?", btnDirection: "Next", setting: "6", inputForm: numberField, misc: ["preText": "First to", "postText": "Games"]),
                  7: (direction: "Is there ad or no-ad scoring?", btnDirection: "Next", setting: "no-ad", inputForm: booleanField, misc: ["optionOne": "Ad scoring", "optionTwo": "No-ad scoring"])]
 
@@ -115,6 +118,18 @@ class SignUpViewController: UIViewController {
     func nextStep() {
         if (step == numSteps) {
             print("Finish")
+            let name = (steps[1]?.setting)!
+            self.ref.child("settings").child(name).setValue(["name": name])
+            
+            let scoringSystem = ScoringSystem()
+            scoringSystem.matches = Int((steps[3]?.setting)!)!
+            scoringSystem.sets = Int((steps[5]?.setting)!)!
+            scoringSystem.games = Int((steps[6]?.setting)!)!
+            scoringSystem.adScoring = ((steps[7]?.setting)! == "ad")
+            createTeam(name: name, password: "")
+            saveScoringSystem(scoringSystem: scoringSystem, singles: true)
+            saveScoringSystem(scoringSystem: scoringSystem, singles: false)
+
         } else {
             step += 1
             setup()

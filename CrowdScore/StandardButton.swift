@@ -1,14 +1,14 @@
 //
-//  DirectionLabel.swift
+//  StandardButton.swift
 //  CrowdScore
 //
-//  Created by Steven Zheng on 5/14/17.
+//  Created by Steven Zheng on 5/20/17.
 //  Copyright © 2017 szzheng. All rights reserved.
 //
 
 import UIKit
 
-class DirectionLabel: UILabel {
+class StandardButton: RoundedButton {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,18 +18,11 @@ class DirectionLabel: UILabel {
     }
     */
     
-    func setup() {
-        self.textColor = whiteColor
-        self.font = directionFont
-        self.textAlignment = NSTextAlignment.center
-    }
-    override func awakeFromNib() {
-        setup()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        self.backgroundColor = blueButtonColor
+        self.setTitleColor(whiteColor, for: .normal)
+        self.titleLabel?.font = UIFont(name: "Helvetica", size: 20)
     }
     
     required init?(coder aDecoder: NSCoder) {

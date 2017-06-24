@@ -1,14 +1,14 @@
 //
-//  TextField.swift
+//  SegmentedControlPanel.swift
 //  CrowdScore
 //
-//  Created by Steven Zheng on 5/16/17.
+//  Created by Steven Zheng on 5/21/17.
 //  Copyright © 2017 szzheng. All rights reserved.
 //
 
 import UIKit
 
-class TextField: UITextField {
+class SegmentedControlPanel: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,16 +18,22 @@ class TextField: UITextField {
     }
     */
     
+    var toggleButtons : [ToggleButton]!
+    var onButton : ToggleButton?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = whiteColor
-        self.textAlignment = NSTextAlignment.center
-        self.tintColor = UIColor.clear
+        toggleButtons = []
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func turnOffCurrentButton() {
+        if let x = onButton {
+            x.toggleOff()
+        }
     }
 
 }

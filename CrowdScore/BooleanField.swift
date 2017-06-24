@@ -21,7 +21,9 @@ class BooleanField: UIView {
     var optionOne : RoundedButton!
     var optionTwo : RoundedButton!
     
-    func setup() {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         optionOne = RoundedButton(frame: CGRect(x: self.frame.size.width/2 - largeButtonSize.width/2, y: 0, width: largeButtonSize.width, height: largeButtonSize.height))
         optionOne.setTitle("Option One", for: .normal)
         optionOne.setTitleColor(whiteColor, for: .normal)
@@ -33,11 +35,6 @@ class BooleanField: UIView {
         optionTwo.setTitleColor(whiteColor, for: .normal)
         optionTwo.backgroundColor = blueButtonColor
         self.addSubview(optionTwo)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {

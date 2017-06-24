@@ -18,17 +18,9 @@ class RoundedButton: UIButton {
     }
     */
     
-    func setup() {
-        self.layer.cornerRadius = 20
-    }
-    
-    override func awakeFromNib() {
-        setup()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        self.layer.cornerRadius = 20
     }
     
     required init?(coder aDecoder: NSCoder) {

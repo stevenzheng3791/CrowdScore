@@ -1,14 +1,15 @@
 //
-//  TextField.swift
+//  BackgroundView.swift
 //  CrowdScore
 //
-//  Created by Steven Zheng on 5/16/17.
+//  Created by Steven Zheng on 5/20/17.
 //  Copyright © 2017 szzheng. All rights reserved.
 //
+//  Background for all screens 
 
 import UIKit
 
-class TextField: UITextField {
+class BackgroundView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -17,13 +18,11 @@ class TextField: UITextField {
         // Drawing code
     }
     */
-    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = whiteColor
-        self.textAlignment = NSTextAlignment.center
-        self.tintColor = UIColor.clear
+        self.backgroundColor = darkGrayColor
     }
     
     required init?(coder aDecoder: NSCoder) {
