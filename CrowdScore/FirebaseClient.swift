@@ -109,34 +109,38 @@ func uploadScore(score: Score) {
 }
 
 /* use this function to observe a score from Firebase*/
-func observeScore(score: Score) {
+func observeScore(observer: MatchViewController) {
     
     rootRef.child("score").observe(.value, with: { (snapshot) in
         print("Observe score")
 
         var playerScore = [Int]()
-        let playerScoreDict = (snapshot.value as! NSDictionary)["playerScore"] as! [String : Int]
+        let playerScoreDict = (snapshot.value as! NSDictionary)["playerScore"] as! [Int]
+        print("playerScoreDict count is \(playerScoreDict.count)")
+        print(playerScoreDict)
         for x in 0..<playerScoreDict.count {
-            playerScore.append(playerScoreDict[String(x)]!)
+            playerScore.append(playerScoreDict[(x)])
         }
         let playerSets = (snapshot.value as! NSDictionary)["playerSets"] as! Int
         
         var challengerScore = [Int]()
-        let challengerScoreDict = (snapshot.value as! NSDictionary)["challengerScore"] as! [String : Int]
+        let challengerScoreDict = (snapshot.value as! NSDictionary)["challengerScore"] as! [Int]
         for x in 0..<challengerScoreDict.count {
-            challengerScore.append(challengerScoreDict[String(x)]!)
+            challengerScore.append(challengerScoreDict[(x)])
         }
         let challengerSets = (snapshot.value as! NSDictionary)["challengerSets"] as! Int
         
         let currentSet = (snapshot.value as! NSDictionary)["currentSet"] as! Int
         let isFinished = (snapshot.value as! NSDictionary)["isFinished"] as! Bool
         
-        score.playerScore = playerScore
-        score.playerSets = playerSets
-        score.challengerScore = challengerScore
-        score.challengerSets = challengerSets
-        score.currentSet = currentSet
-        score.isFinished = isFinished
+        observer.score.playerScore = playerScore
+        observer.score.playerSets = playerSets
+        observer.score.challengerScore = challengerScore
+        observer.score.challengerSets = challengerSets
+        observer.score.currentSet = currentSet
+        observer.score.isFinished = isFinished
+        
+        observer.scoreboard.displayScore(score: observer.score)
         
     }) { (error) in
         print(error.localizedDescription)

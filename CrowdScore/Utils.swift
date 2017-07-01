@@ -29,15 +29,15 @@ func nameToEmail(name: String) -> String {
 
 
 class Score {
+    
+    var observers: [MatchViewController]!
     var playerScore: [Int]!
     var challengerScore: [Int]!
-    
     var playerSets: Int
     var challengerSets: Int
-    
     var currentSet: Int
     var isFinished: Bool
-    
+        
     init(numSets: Int) {
         playerScore = Array(repeating: 0, count: numSets + 1)
         challengerScore = Array(repeating: 0, count: numSets + 1)
@@ -47,6 +47,7 @@ class Score {
         isFinished = false
     }
     
+    /*
     func setScore(playerScore: [Int], challengerScore: [Int], playerSets: Int, challengerSets: Int, currentSet: Int, isFinished: Bool) {
         self.playerScore = playerScore
         self.challengerScore = challengerScore
@@ -55,4 +56,5 @@ class Score {
         self.currentSet = currentSet
         self.isFinished = isFinished
     }
+    */
 }
