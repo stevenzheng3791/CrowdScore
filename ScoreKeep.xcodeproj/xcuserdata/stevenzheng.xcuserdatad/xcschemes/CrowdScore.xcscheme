@@ -17,7 +17,7 @@
                BlueprintIdentifier = "7345644D1EC5414800A8C602"
                BuildableName = "CrowdScore.app"
                BlueprintName = "CrowdScore"
-               ReferencedContainer = "container:CrowdScore.xcodeproj">
+               ReferencedContainer = "container:ScoreKeep.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "7345644D1EC5414800A8C602"
             BuildableName = "CrowdScore.app"
             BlueprintName = "CrowdScore"
-            ReferencedContainer = "container:CrowdScore.xcodeproj">
+            ReferencedContainer = "container:ScoreKeep.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "7345644D1EC5414800A8C602"
             BuildableName = "CrowdScore.app"
             BlueprintName = "CrowdScore"
-            ReferencedContainer = "container:CrowdScore.xcodeproj">
+            ReferencedContainer = "container:ScoreKeep.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "7345644D1EC5414800A8C602"
             BuildableName = "CrowdScore.app"
             BlueprintName = "CrowdScore"
-            ReferencedContainer = "container:CrowdScore.xcodeproj">
+            ReferencedContainer = "container:ScoreKeep.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

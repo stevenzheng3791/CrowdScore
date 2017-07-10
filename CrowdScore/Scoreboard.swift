@@ -10,20 +10,22 @@ import UIKit
 
 class Scoreboard: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
     var title : UILabel!
     var player : UILabel!
     var challenger : UILabel!
-    var horizontalDiv : UIView!
-    var verticalDivs : [UIView]!
     var scoreCards : (player:[UILabel], challenger:[UILabel])!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     
     init(frame: CGRect, numSets: Int) {
         super.init(frame: frame)
@@ -32,8 +34,6 @@ class Scoreboard: UIView {
         self.layer.cornerRadius = 20
         self.clipsToBounds = true
         
-        
-        
         // Default values
         title = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0))
         title.textAlignment = NSTextAlignment.center
@@ -41,21 +41,17 @@ class Scoreboard: UIView {
         title.frame.size.height = title.sizeThatFits(CGSize(width: title.frame.width, height: CGFloat.greatestFiniteMagnitude)).height
         self.addSubview(title)
         
-        
-        // Initial score
         let scoresView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height - title.frame.height))
         scoresView.frame.origin.y = getYOrigin(topView: title, distance: -5)
         self.addSubview(scoresView)
         
-        
-        // set up dividers
-        horizontalDiv = UIView(frame: CGRect(x: 0, y: 0, width: scoresView.frame.width - 10, height: 1))
+        // Dividers
+        let horizontalDiv = UIView(frame: CGRect(x: 0, y: 0, width: scoresView.frame.width - 10, height: 1))
         horizontalDiv.frame.origin.x = scoresView.frame.width/2 - horizontalDiv.frame.width/2
         horizontalDiv.frame.origin.y = scoresView.frame.height/2 - horizontalDiv.frame.height/2
         horizontalDiv.backgroundColor = UIColor.lightGray
         scoresView.addSubview(horizontalDiv)
-        
-        verticalDivs = []
+        var verticalDivs = [UIView]()
         var inset = scoresView.frame.width - 5
         for _ in 0..<numSets {
             inset -= (scoreCardWidth + 1)
@@ -66,7 +62,7 @@ class Scoreboard: UIView {
             verticalDivs.insert(verticalDiv, at: 0)
         }
         
-        // set up scorecards
+        // Scorecards
         scoreCards = (player:[],challenger:[])
         inset = scoresView.frame.width - 5
         for _ in 0...numSets {
@@ -87,24 +83,19 @@ class Scoreboard: UIView {
         }
         
         // set up players
-        
         player = UILabel(frame: CGRect(x: 10, y: 0, width: inset + 1 - 10, height: scoresView.frame.height/2))
         player.textAlignment = NSTextAlignment.left
-        player.text = "Arya Stark"
+        player.text = "Player"
         scoresView.addSubview(player)
-        title = UILabel(frame: CGRect(x: 10, y: scoresView.frame.height/2, width: inset + 1 - 10, height: scoresView.frame.height/2))
-        title.textAlignment = NSTextAlignment.left
-        title.text = "Challenger"
-        scoresView.addSubview(title)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        challenger = UILabel(frame: CGRect(x: 10, y: scoresView.frame.height/2, width: inset + 1 - 10, height: scoresView.frame.height/2))
+        challenger.textAlignment = NSTextAlignment.left
+        challenger.text = "Opponent"
+        scoresView.addSubview(challenger)
     }
     
     func displayScore(score: Score) {
+        /* Update the display with the given score */
         for i in 0..<score.playerScore.count {
-            
             if (score.playerScore[i] == 45) {
                 scoreCards.player[i].text = "AD"
                 scoreCards.challenger[i].text = ""
@@ -116,5 +107,36 @@ class Scoreboard: UIView {
                 scoreCards.challenger[i].text = String(score.challengerScore[i])
             }
         }
+        
+        if (score.playerIsServing) {
+            denotePlayerIsServing()
+        } else {
+            denoteOpponentIsServing()
+        }
+    }
+    
+    func displayContestants(playerName: String, opponentName: String) {
+        /* Update the display with the given contestant names */
+        player.text = playerName
+        challenger.text = opponentName
+    }
+    
+    func displayTitle(titleName: String) {
+        /* Update the display with the given match title */
+        title.text = titleName
+    }
+    
+    func denotePlayerIsServing() {
+        /* Mark that the player is serving and that the opponent is not serving */
+        /* TODO */
+        player.textAlignment = NSTextAlignment.center
+        challenger.textAlignment = NSTextAlignment.left
+    }
+    
+    func denoteOpponentIsServing() {
+        /* Mark that the opponent is serving and that the player is not serving */
+        /* TODO */
+        challenger.textAlignment = NSTextAlignment.center
+        player.textAlignment = NSTextAlignment.left
     }
 }

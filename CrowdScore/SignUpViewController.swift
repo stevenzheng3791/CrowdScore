@@ -28,6 +28,8 @@ class SignUpViewController: UIViewController {
     var numSteps : Int!
     var steps = [Int: (direction: String, btnDirection: String, setting: String, inputForm: UIView?, misc: [String: String])]()
     
+    var firebaseClient = FirebaseClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -122,13 +124,13 @@ class SignUpViewController: UIViewController {
             self.ref.child("settings").child(name).setValue(["name": name])
             
             let scoringSystem = ScoringSystem()
-            scoringSystem.matches = Int((steps[3]?.setting)!)!
+            //scoringSystem.matches = Int((steps[3]?.setting)!)!
             scoringSystem.sets = Int((steps[5]?.setting)!)!
             scoringSystem.games = Int((steps[6]?.setting)!)!
             scoringSystem.adScoring = ((steps[7]?.setting)! == "ad")
-            createTeam(name: name, password: "")
-            saveScoringSystem(scoringSystem: scoringSystem, singles: true)
-            saveScoringSystem(scoringSystem: scoringSystem, singles: false)
+            firebaseClient.createTeam(name: name, password: "")
+            firebaseClient.saveScoringSystem(scoringSystem: scoringSystem, singles: true)
+            //saveScoringSystem(scoringSystem: scoringSystem, singles: false)
 
         } else {
             step += 1

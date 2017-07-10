@@ -18,12 +18,11 @@ class SegmentedControlPanel: UIView {
     }
     */
     
-    var toggleButtons : [ToggleButton]!
+    //var toggleButtons : [ToggleButton]!
     var onButton : ToggleButton?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        toggleButtons = []
     }
     
     required init?(coder aDecoder: NSCoder) {

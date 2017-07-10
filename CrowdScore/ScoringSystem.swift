@@ -9,9 +9,9 @@
 import Foundation
 
 class ScoringSystem {
+    /* Handler for updating a score */
     var adScoring: Bool
     var games: Int
-    var matches: Int
     var sets: Int
     var superTiebreak: Bool
     var superTiebreakPoints: Int
@@ -21,24 +21,25 @@ class ScoringSystem {
     var winByTwoPointsSuperTiebreak: Bool
     var winByTwoPointsTiebreak: Bool
     
-    init() {
-        adScoring = true
-        games = 6
-        matches = 4
-        sets = 2
-        superTiebreak = false
-        superTiebreakPoints = 10
-        tiebreakPoints = 7
-        tiebreakStart = 6
-        winByTwoGames = true
-        winByTwoPointsSuperTiebreak = false
-        winByTwoPointsTiebreak = true
+    init(adScoring: Bool = true, games: Int = 6, sets: Int = 2, superTiebreak: Bool = false, superTiebreakPoints: Int = 10,
+         tiebreakPoints: Int = 7, tiebreakStart: Int = 6, winByTwoGames: Bool = true, winByTwoPointsSuperTiebreak: Bool = false,
+         winByTwoPointsTiebreak: Bool = true) {
+        self.adScoring = adScoring
+        self.games = games
+        self.sets = sets
+        self.superTiebreak = superTiebreak
+        self.superTiebreakPoints = superTiebreakPoints
+        self.tiebreakPoints = tiebreakPoints
+        self.tiebreakStart = tiebreakStart
+        self.winByTwoGames = winByTwoGames
+        self.winByTwoPointsSuperTiebreak = winByTwoPointsSuperTiebreak
+        self.winByTwoPointsTiebreak = winByTwoPointsTiebreak
     }
     
     
     /* player wins point */
     func awardPointToPlayer(score: Score) {
-        if (!isFinished(score: score)) {
+        if (score.inProgress) {
             if (isTiebreak(score: score)) {
                 updateTiebreak(score: score, winnerIsPlayer: true)
             } else if (isSuperTiebreak(score: score)) {
@@ -51,7 +52,7 @@ class ScoringSystem {
     
     /* challenger wins point */
     func awardPointToChallenger(score: Score) {
-        if (!isFinished(score: score)) {
+        if (score.inProgress) {
             if (isTiebreak(score: score)) {
                 updateTiebreak(score: score, winnerIsPlayer: false)
             } else if (isSuperTiebreak(score: score)) {
@@ -89,7 +90,7 @@ class ScoringSystem {
         } else {
             winnerScore = 0
             loserScore = 0
-            
+            score.playerIsServing = !score.playerIsServing
             updateSet(score: score, winnerIsPlayer: winnerIsPlayer)
         }
         
@@ -122,8 +123,13 @@ class ScoringSystem {
         if (winnerScore >= tiebreakPoints && winnerScore >= (loserScore + 2)) {
             winnerScore = 0
             loserScore = 0
-            
+            score.playerServedFirstInSet = !score.playerServedFirstInSet
+            score.playerIsServing = score.playerServedFirstInSet
             updateSet(score: score, winnerIsPlayer: winnerIsPlayer)
+        } else {
+            if ((winnerScore + loserScore) % 2) == 1 {
+                score.playerIsServing = !score.playerIsServing
+            }
         }
         
         // update score
@@ -155,8 +161,11 @@ class ScoringSystem {
         if (winnerScore >= superTiebreakPoints && winnerScore >= (loserScore + 2)) {
             winnerScore = 0
             loserScore = 0
-            
             updateSuperTiebreakSet(score: score, winnerIsPlayer: winnerIsPlayer)
+        } else {
+            if ((winnerScore + loserScore) % 2) == 1 {
+                score.playerIsServing = !score.playerIsServing
+            }
         }
         
         // update score
@@ -240,17 +249,14 @@ class ScoringSystem {
         } else {
             score.challengerSets = winnerScore
         }
+        
+        updateMatchStatus(score: score)
     }
     
     
-    // Helper functions
-    
+    /* Helper functions */
     func nextSet(score: Score) {
         score.currentSet += 1
-    }
-    
-    func isFinished(score: Score) -> Bool {
-        return (score.challengerSets == sets || score.playerSets == sets)
     }
     
     func isTiebreak(score: Score) -> Bool {
@@ -262,7 +268,30 @@ class ScoringSystem {
     }
     
     func getMaxSets() -> Int {
+        /* Get the maximum number of sets played possible */
         return sets * 2 - 1
+    }
+    
+    func getCurrentSet(score: Score) -> Int {
+        /* Get the current set in progress */
+        return score.playerSets + score.challengerSets + 1
+    }
+    
+    func updateMatchStatus(score: Score) {
+        /* Updates the match status based on the current set score */
+        if score.playerSets == sets {
+            score.playerWon = true
+            score.challengerWon = false
+            score.inProgress = false
+        } else if score.challengerSets == sets {
+            score.playerWon = false
+            score.challengerWon = true
+            score.inProgress = false
+        } else {
+            score.playerWon = false
+            score.challengerWon = false
+            score.inProgress = true
+        }
     }
     
 }

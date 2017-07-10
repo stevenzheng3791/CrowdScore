@@ -16,8 +16,12 @@ class TabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
         
+        /*
         let matchVC = MatchViewController()
         matchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        */
+        let matchesVC = MatchesViewController()
+        matchesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         
         let scoresVC = ScoresViewController()
         scoresVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
@@ -29,7 +33,7 @@ class TabBarController: UITabBarController {
         playersVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 3)
         
         
-        let viewControllerList = [matchVC,scoresVC,signupVC,playersVC]
+        let viewControllerList = [matchesVC,scoresVC,signupVC,playersVC]
         viewControllers = viewControllerList
     }
 

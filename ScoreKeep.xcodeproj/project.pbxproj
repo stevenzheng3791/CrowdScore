@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7311FB621F09DD6200A1A50B /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311FB611F09DD6200A1A50B /* Score.swift */; };
+		7311FB641F0C225000A1A50B /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311FB631F0C225000A1A50B /* MatchesViewController.swift */; };
 		732EC9621ED106ED00006463 /* StandardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732EC9611ED106ED00006463 /* StandardButton.swift */; };
 		732EC9651ED10E5300006463 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732EC9641ED10E5300006463 /* CGRectExtension.swift */; };
 		732EC9691ED118A200006463 /* Logo_9x.png in Resources */ = {isa = PBXBuildFile; fileRef = 732EC9671ED118A200006463 /* Logo_9x.png */; };
@@ -37,6 +39,8 @@
 		733097441EC8FDFE00264E5E /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733097431EC8FDFE00264E5E /* NumberField.swift */; };
 		733097461EC92F5A00264E5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 733097451EC92F5A00264E5E /* GoogleService-Info.plist */; };
 		733097491EC97F6A00264E5E /* BooleanField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733097481EC97F6A00264E5E /* BooleanField.swift */; };
+		7332906A1F117E30002405C8 /* StatPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733290691F117E30002405C8 /* StatPanel.swift */; };
+		7332906C1F11C0C2002405C8 /* MatchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332906B1F11C0C2002405C8 /* MatchClient.swift */; };
 		734564521EC5414800A8C602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734564511EC5414800A8C602 /* AppDelegate.swift */; };
 		734564541EC5414800A8C602 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734564531EC5414800A8C602 /* InitialViewController.swift */; };
 		7345645A1EC5414800A8C602 /* CrowdScore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 734564581EC5414800A8C602 /* CrowdScore.xcdatamodeld */; };
@@ -61,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		1767C3EBC6FB602D15D56CB7 /* Pods_CrowdScore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrowdScore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7311FB611F09DD6200A1A50B /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		7311FB631F0C225000A1A50B /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		732EC9611ED106ED00006463 /* StandardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardButton.swift; sourceTree = "<group>"; };
 		732EC9641ED10E5300006463 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		732EC9671ED118A200006463 /* Logo_9x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_9x.png; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 		733097431EC8FDFE00264E5E /* NumberField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		733097451EC92F5A00264E5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		733097481EC97F6A00264E5E /* BooleanField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooleanField.swift; sourceTree = "<group>"; };
+		733290691F117E30002405C8 /* StatPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatPanel.swift; sourceTree = "<group>"; };
+		7332906B1F11C0C2002405C8 /* MatchClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchClient.swift; sourceTree = "<group>"; };
 		7345644E1EC5414800A8C602 /* CrowdScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrowdScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734564511EC5414800A8C602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		734564531EC5414800A8C602 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +172,7 @@
 				732EC9721ED1585500006463 /* Scoreboard.swift */,
 				732EC97A1ED2284C00006463 /* ScoringPanel.swift */,
 				732EC9781ED220D700006463 /* SegmentedControlPanel.swift */,
+				733290691F117E30002405C8 /* StatPanel.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -258,6 +267,7 @@
 				73F1C5151EE2EAF700203D16 /* Roster */,
 				732EC9741ED1631800006463 /* MatchViewController.swift */,
 				732EC9841ED4BB9900006463 /* ScoresViewController.swift */,
+				7311FB631F0C225000A1A50B /* MatchesViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -278,6 +288,8 @@
 				73A896681ECCAF1900D70651 /* Utils.swift */,
 				732EC97E1ED355E400006463 /* ScoringSystem.swift */,
 				732EC9881ED5E49C00006463 /* FirebaseClient.swift */,
+				7311FB611F09DD6200A1A50B /* Score.swift */,
+				7332906B1F11C0C2002405C8 /* MatchClient.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -332,7 +344,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 734564491EC5414800A8C602 /* Build configuration list for PBXProject "CrowdScore" */;
+			buildConfigurationList = 734564491EC5414800A8C602 /* Build configuration list for PBXProject "ScoreKeep" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -441,6 +453,7 @@
 				732EC9771ED2090D00006463 /* ToggleButton.swift in Sources */,
 				73A8966C1ECCB51000D70651 /* PlayerTableViewCell.swift in Sources */,
 				732EC9731ED1585500006463 /* Scoreboard.swift in Sources */,
+				7311FB641F0C225000A1A50B /* MatchesViewController.swift in Sources */,
 				732EC97B1ED2284C00006463 /* ScoringPanel.swift in Sources */,
 				73A6CD331ECE49E200E37A35 /* MatchTableViewCell.swift in Sources */,
 				73643E9B1EC75B7A00B7087E /* ProfileImageView.swift in Sources */,
@@ -450,17 +463,20 @@
 				734564521EC5414800A8C602 /* AppDelegate.swift in Sources */,
 				732EC9751ED1631800006463 /* MatchViewController.swift in Sources */,
 				733097491EC97F6A00264E5E /* BooleanField.swift in Sources */,
+				7332906A1F117E30002405C8 /* StatPanel.swift in Sources */,
 				732EC9851ED4BB9900006463 /* ScoresViewController.swift in Sources */,
 				7330973A1EC8DFDB00264E5E /* StandardLabel.swift in Sources */,
 				733097421EC8E97A00264E5E /* SignUpViewController.swift in Sources */,
 				73A6CD2D1ECD090E00E37A35 /* MenuViewController.swift in Sources */,
 				733097361EC8D85500264E5E /* TransparentNavigationBar.swift in Sources */,
 				73643E991EC75A6E00B7087E /* UIButtonExtension.swift in Sources */,
+				7332906C1F11C0C2002405C8 /* MatchClient.swift in Sources */,
 				733097381EC8DA2700264E5E /* BaseView.swift in Sources */,
 				7345645A1EC5414800A8C602 /* CrowdScore.xcdatamodeld in Sources */,
 				73643E921EC6CBEF00B7087E /* RoundedButton.swift in Sources */,
 				732EC9891ED5E49C00006463 /* FirebaseClient.swift in Sources */,
 				73A6CD301ECE367800E37A35 /* PlayersViewController.swift in Sources */,
+				7311FB621F09DD6200A1A50B /* Score.swift in Sources */,
 				732EC9711ED1453200006463 /* NavigationBarExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,7 +617,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		734564491EC5414800A8C602 /* Build configuration list for PBXProject "CrowdScore" */ = {
+		734564491EC5414800A8C602 /* Build configuration list for PBXProject "ScoreKeep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				734564611EC5414800A8C602 /* Debug */,
